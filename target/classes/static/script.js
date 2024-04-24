@@ -14,6 +14,10 @@ function kjopBillett() {
   const feilTelefonnr = $("#tom-telefonnr");
   const feilEpost = $("#tom-epost");
 
+  if (!validerNavn()) {
+    // Validate the name first
+    return;
+  }
   let kunde = {
     //Opretter objektet
 
@@ -127,4 +131,18 @@ function slettBiletter() {
   }
   liste = []; // Her setter jeg listen til å være tom
   formaterBilett(); // Dette tømmer tabellen som viser bestillingene
+}
+
+function validerNavn() {
+  const regexp = /^[A-Z]{4}$/; // This regex matches exactly 4 uppercase letters
+  const fNavn = $("#fornavn-felt").val();
+  const feilFornavn = $("#tom-fornavn");
+
+  if (!regexp.test(fNavn)) {
+    feilFornavn.html("Fornavnet må være 4 store bokstaver");
+    return false;
+  } else {
+    feilFornavn.html("");
+    return true;
+  }
 }

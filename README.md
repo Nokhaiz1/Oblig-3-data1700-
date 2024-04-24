@@ -4,7 +4,7 @@ OsloMet brukernavn: noyas7181
 
 GitHub brukernavn: Nokhaiz1
 
-GitHub repo URL:
+GitHub repo URL: https://github.com/Nokhaiz1/Oblig-3-data1700-.git
 
 Fullt navn: Nokhaiz Yassar
 

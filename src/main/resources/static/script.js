@@ -14,6 +14,10 @@ function kjopBillett() {
   const feilTelefonnr = $("#tom-telefonnr");
   const feilEpost = $("#tom-epost");
 
+  if (!validerNavn()) {
+    // Validate the name first
+    return;
+  }
   let kunde = {
     //Opretter objektet
 
@@ -58,12 +62,12 @@ function kjopBillett() {
   } else feilEpost.html("");
 
   if (
-    //Her sjekkes det om alle feltene har fått en verdi,
-    kunde.antall !== "" && // og hvis de har fått en verdi så dyttes objektet inn i lista.
-    kunde.fornavn !== "" && // I tillegg kjøres utMelding funksjonen som presenterer objektet på en fin måte
-    kunde.etternavn !== "" && // Til slutt tømmes feltene slik at "neste" kunde kan fylle de inn igjen
-    kunde.telefonnr !== "" &&
-    kunde.epost !== ""
+      //Her sjekkes det om alle feltene har fått en verdi,
+      kunde.antall !== "" && // og hvis de har fått en verdi så dyttes objektet inn i lista.
+      kunde.fornavn !== "" && // I tillegg kjøres utMelding funksjonen som presenterer objektet på en fin måte
+      kunde.etternavn !== "" && // Til slutt tømmes feltene slik at "neste" kunde kan fylle de inn igjen
+      kunde.telefonnr !== "" &&
+      kunde.epost !== ""
   ) {
     liste.push(kunde);
     formaterBilett();
@@ -79,37 +83,37 @@ function kjopBillett() {
 
 function formaterBilett() {
   let ut =
-    "<tr>" +
-    "<th>Film</th>" + // Setter opp visningen av bestillinger slik vist i opggaven
-    "<th>Antall</th>" +
-    "<th>Fornavn</th>" +
-    "<th>Etternavn</th>" +
-    "<th>Telefonnr</th>" +
-    "<th>Epost</th>" +
-    "</tr>";
+      "<tr>" +
+      "<th>Film</th>" + // Setter opp visningen av bestillinger slik vist i opggaven
+      "<th>Antall</th>" +
+      "<th>Fornavn</th>" +
+      "<th>Etternavn</th>" +
+      "<th>Telefonnr</th>" +
+      "<th>Epost</th>" +
+      "</tr>";
   for (let bestilling of liste) {
     ut += "<tr>";
 
     ut +=
-      "<td>" +
-      bestilling.film +
-      "</td>" + // Henter ut alle bestillingene fra lista
-      "<td>" +
-      bestilling.antall +
-      "</td>" +
-      "<td>" +
-      bestilling.fornavn +
-      "</td>" +
-      "<td>" +
-      bestilling.etternavn +
-      "</td>" +
-      "<td>" +
-      bestilling.telefonnummer +
-      "</td>" +
-      "<td>" +
-      bestilling.epost +
-      "</td>" +
-      "<br>";
+        "<td>" +
+        bestilling.film +
+        "</td>" + // Henter ut alle bestillingene fra lista
+        "<td>" +
+        bestilling.antall +
+        "</td>" +
+        "<td>" +
+        bestilling.fornavn +
+        "</td>" +
+        "<td>" +
+        bestilling.etternavn +
+        "</td>" +
+        "<td>" +
+        bestilling.telefonnummer +
+        "</td>" +
+        "<td>" +
+        bestilling.epost +
+        "</td>" +
+        "<br>";
 
     ut += "</tr>";
   }
@@ -127,4 +131,18 @@ function slettBiletter() {
   }
   liste = []; // Her setter jeg listen til å være tom
   formaterBilett(); // Dette tømmer tabellen som viser bestillingene
+}
+
+function validerNavn() {
+  const regexp = /^[A-Z]{4}$/; // This regex matches exactly 4 uppercase letters
+  const fNavn = $("#fornavn-felt").val();
+  const feilFornavn = $("#tom-fornavn");
+
+  if (!regexp.test(fNavn)) {
+    feilFornavn.html("Fornavnet må være 4 store bokstaver");
+    return false;
+  } else {
+    feilFornavn.html("");
+    return true;
+  }
 }

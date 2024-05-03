@@ -5,6 +5,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -15,7 +16,7 @@ public class BiletterRepository {
     private JdbcTemplate db;
 
     public void lagreBiletter (Biletter nyBilett){
-        String sql = "INSERT INTO Biletter (antall, fornavn, etternavn, mobilnummer, epost, navn) VALUES(?,?,?,?,?,?)";
+        String sql = "INSERT INTO BILETTER (antall, fornavn, etternavn, mobilnummer, epost, navn) VALUES(?,?,?,?,?,?)";
 
         db.update(
                 sql,
@@ -28,15 +29,21 @@ public class BiletterRepository {
         );
     }
 
-    public List<Biletter> hentAlle(){
-        String sql = "SELECT * FROM Biletter";
-        List<Biletter> alleFilmer = db.query(sql, new BeanPropertyRowMapper(Biletter.class));
-        Collections.sort(alleFilmer, new NavnSortering());
-        return alleFilmer;
+    public List<Biletter> hentAlle() {
+        try {
+            String sql = "SELECT * FROM BILETTER";
+            List<Biletter> alleBiletter = db.query(sql, new BeanPropertyRowMapper<>(Biletter.class));
+            Collections.sort(alleBiletter, new NavnSortering());
+            return alleBiletter;
+        } catch (Exception e) {
+            e.printStackTrace();  // Log exception
+            return new ArrayList<>();  // Return an empty list or handle accordingly
+        }
     }
 
+
     public void slettAlle(){
-        String sql = "DELETE FROM Biletter";
+        String sql = "DELETE FROM BILETTER";
         db.update(sql);
     }
 

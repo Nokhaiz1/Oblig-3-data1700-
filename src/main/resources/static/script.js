@@ -134,7 +134,7 @@ function slettBiletter() {
 }
 
 function validerNavn() {
-  const regexp = /^[A-Z]{4}$/; // This regex matches exactly 4 uppercase letters
+  const regexp = /^[A-Za-z]{2,32}$/; // This regex matches exactly 4 uppercase letters
   const fNavn = $("#fornavn-felt").val();
   const feilFornavn = $("#tom-fornavn");
 

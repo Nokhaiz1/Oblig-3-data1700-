@@ -3,13 +3,13 @@ package com.example.oblig3;
 public class Biletter {
 
     private String film;
-    private String antall;
+    private int antall;  // Changed from String to int
     private String fornavn;
     private String etternavn;
     private String telefonnummer;
     private String epost;
 
-    public Biletter(String film, String antall, String fornavn, String etternavn, String telefonnummer, String epost) {
+    public Biletter(String film, int antall, String fornavn, String etternavn, String telefonnummer, String epost) {
         this.film = film;
         this.antall = antall;
         this.fornavn = fornavn;
@@ -18,6 +18,7 @@ public class Biletter {
         this.epost = epost;
     }
 
+    // Getters and Setters
     public String getFilm() {
         return film;
     }
@@ -26,11 +27,11 @@ public class Biletter {
         this.film = film;
     }
 
-    public String getAntall() {
+    public int getAntall() {  // Return type changed to int
         return antall;
     }
 
-    public void setAntall(String antall) {
+    public void setAntall(int antall) {  // Parameter type changed to int
         this.antall = antall;
     }
 
@@ -66,4 +67,3 @@ public class Biletter {
         this.epost = epost;
     }
 }
-

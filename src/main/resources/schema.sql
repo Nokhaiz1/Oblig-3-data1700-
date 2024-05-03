@@ -6,7 +6,6 @@ CREATE TABLE Biletter
     etternavn   VARCHAR(255) NOT NULL,
     telefonnummer INTEGER,
     epost       VARCHAR(255) NOT NULL,
-    navn        varchar (255) NOT NULL,
     PRIMARY KEY (id)
 
 );

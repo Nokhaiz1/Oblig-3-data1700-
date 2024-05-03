@@ -12,5 +12,3 @@ Kort beskrivelse av applikasjon (5–10 setninger):
 
 Programvare for reservasjon av kinobilletter. Hver billett representeres av et objekt som inneholder informasjon om filmen som skal vises, antall billetter, samt fornavn, etternavn, e-post og telefonnummer til den som bestiller. Bestillingen registreres kun hvis all nødvendig informasjon er oppgitt. Programmet har også en funksjon for å slette alle bestillinger og inkluderer en database hvor alle reservasjoner lagres.
 
-
-Valgte regex for kun fornavnfelt

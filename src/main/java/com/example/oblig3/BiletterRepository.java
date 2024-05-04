@@ -15,18 +15,19 @@ public class BiletterRepository {
     private JdbcTemplate db;
 
     public void lagreBiletter (Biletter nyBilett){
-        String sql = "INSERT INTO Biletter (antall, fornavn, etternavn, mobilnummer, epost, navn) VALUES(?,?,?,?,?,?)";
-
+        String sql = "INSERT INTO Biletter (film, antall, fornavn, etternavn, telefonnummer, epost) VALUES(?,?,?,?,?,?)";
+    
         db.update(
-                sql,
-                nyBilett.getFilm(),
-                nyBilett.getAntall(),
-                nyBilett.getFornavn(),
-                nyBilett.getEtternavn(),
-                nyBilett.getTelefonnummer(),
-                nyBilett.getEpost()
+            sql,
+            nyBilett.getFilm(),
+            nyBilett.getAntall(),
+            nyBilett.getFornavn(),
+            nyBilett.getEtternavn(),
+            nyBilett.getTelefonnummer(),
+            nyBilett.getEpost()
         );
     }
+    
 
     public List<Biletter> hentAlle(){
         String sql = "SELECT * FROM Biletter";

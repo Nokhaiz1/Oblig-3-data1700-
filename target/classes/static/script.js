@@ -36,16 +36,6 @@ function kjopBillett() {
     alert("Error saving data");
   });
 
-  clearInputFields();
-  updateErrorMessages(kunde);
-}
-
-function validerNavn(fNavn, tlf, epost) {
-  const regexp_navn = /^[A-Za-z ]{0,20}$/; // Allow space in names
-  const regex_epost = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
-  const regex_tlf = /^[0-9]{8}$/;
-
-  let isValid = true;
   function hentAlle() {
     $.get("/hent", function (data) {
       formaterBilett(data);
